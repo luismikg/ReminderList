@@ -14,9 +14,12 @@ class FakeDataSource : ReminderDataSource {
 
     init {
         reminderList = mutableListOf()
-        error = false
+        setError(false)
     }
 
+    fun setError(error: Boolean) {
+        this.error = error
+    }
 
     override suspend fun getReminders(): Result<List<ReminderDTO>> {
         return if (error) {
